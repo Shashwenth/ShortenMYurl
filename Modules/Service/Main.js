@@ -2,7 +2,7 @@ import checkValid from "./CheckDuplicate.js";
 import hashFunction from "./HashString.js";
 import db from "../DataModels/DB.js";
 import Map from "../DataModels/Map.js";
-
+import InsertMyDB from "./MyDBInsert.js";
 
 export default function Main(url){
     let hashValue= hashFunction(url);
@@ -10,6 +10,7 @@ export default function Main(url){
     if(checkValid(hashValue)){
         const newUrl="http://localhost"
         db.push(new Map(url,hashValue,1));
+        InsertMyDB(new Map(url,hashValue,1));
     }else{
         //console.log("Already present");
         // const arr=db.filter((item) => item.ShortUrl==hashValue)
@@ -23,6 +24,7 @@ export default function Main(url){
         }
         //console.log("NNew Hash add to Array");
         db.push(new Map(url,hashValue,repeat));
+        InsertMyDB(new Map(url,hashValue,repeat));
     }
     return hashValue;
 }

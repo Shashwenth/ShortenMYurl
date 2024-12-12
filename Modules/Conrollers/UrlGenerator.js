@@ -7,9 +7,14 @@ import cors from 'cors';
 import GuestMain from '../Service/GuestMain.js';
 import GuestFindLongUrl from '../Service/GuestFind.js';
 import DeleteGuestDB from '../Service/DeleteGuestDB.js';
+import { neon } from '@neondatabase/serverless';
+
+
 dotenv.config();
 
-const allowedOrigins = ['http://localhost:3000'];
+const sql=neon(process.env.DATABASE_URL);
+const FRONTEND_URL=process.env.FRONTEND_URL;
+const allowedOrigins = [FRONTEND_URL];
 
 const urlHead = process.env.URL_HEAD;
 const GuesturlHead = process.env.GUEST_URL_HEAD;
@@ -31,6 +36,19 @@ app.use(cors({
 
 app.options('*', cors()); 
 
+app.get("/db-version", async (req, res) => {
+    try {
+        // Query the Neon database for the version
+        const result = await sql`SELECT version()`;
+        const { version } = result[0];
+
+        // Return the database version
+        res.status(200).json({ version });
+    } catch (error) {
+        console.error("Database query failed", error);
+        res.status(500).json({ error: "Failed to query the database" });
+    }
+});
 
 app.get("/Shashwenth/:shortURL", async (request, response) => {
     try {

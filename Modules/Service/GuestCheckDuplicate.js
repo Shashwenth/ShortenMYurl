@@ -1,4 +1,4 @@
-import guestdb from "../DataModels/GuestDB";
+import guestdb from "../DataModels/GuestDB.js";
 
 export default function guestcheckValid(hashValue){
 

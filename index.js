@@ -1,5 +1,10 @@
 import Main from "./Modules/Service/Main.js";
 import app from './Modules/Conrollers/UrlGenerator.js'
-// const url="https://www.amazon.com/Rust-Programming-Language-2nd/dp/1718503105/ref=sr_1_1?crid=3977W67XGQPJR&keywords=the+rust+programming+language&qid=1685542718&sprefix=the+%2Caps%2C3079&sr=8-1";
+import InitializeDB from "./Modules/Service/InitializeDB.js";
 
-// Main(url);
+async function startApp () {
+    await InitializeDB();
+    console.log("Application Started")
+}
+
+startApp();
