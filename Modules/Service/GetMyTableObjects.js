@@ -8,7 +8,8 @@ export default function GetMyTableObjects(){
         returnBody.push(
             {
                 longURL:item.LongUrl,
-                shortURL: urlHead+item.ShortUrl
+                shortURL: urlHead+item.ShortUrl,
+                description: item.description,
             }
         );
     })
