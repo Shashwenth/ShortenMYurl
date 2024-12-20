@@ -4,7 +4,7 @@ import InitializeDB from "./Modules/Service/InitializeDB.js";
 
 async function startApp () {
     await InitializeDB();
-    console.log("Application Started")
+    console.log("Application Started - Release on 20-12-2024  12:50")
 }
 
 startApp();
