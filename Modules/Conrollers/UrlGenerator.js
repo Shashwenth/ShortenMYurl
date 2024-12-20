@@ -62,7 +62,7 @@ app.get("/Shashwenth/:shortURL", async (request, response) => {
         console.error("Error fetching long URL:", error);
         response.status(500).json({ error: "Internal Server Error" });
     }
-    console.log("Exit");
+    //console.log("Exit");
 });
 
 app.get("/table", (request, response) => {
@@ -73,10 +73,12 @@ app.get("/table", (request, response) => {
 
 app.post("/", (request, response) => {
     const url = request.body.url;
-    const newurl = Main(url);
+    const description = request.body.description;
+    const newurl = Main(url,description);
     const returnBody = {
         "url": urlHead + newurl
     };
+    //console.log("Return Body:", returnBody);
     response.send(returnBody);
 });
 
@@ -101,7 +103,7 @@ app.get("/Guest/:shortURL", async (request, response) => {
         console.error("Error fetching long URL:", error);
         response.status(500).json({ error: "Internal Server Error" });
     }
-    console.log("Exit");
+    //console.log("Exit");
 });
 
 app.get("/", (request, response) => {

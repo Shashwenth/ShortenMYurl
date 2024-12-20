@@ -9,8 +9,8 @@ export default async function InsertGuestDB(mapData) {
 
     try{
         await sql`
-      INSERT INTO url_mapping_guest (LongUrl, ShortUrl, round)
-      VALUES (${mapData.LongUrl}, ${mapData.ShortUrl}, ${mapData.round});
+      INSERT INTO url_mapping_guest (LongUrl, ShortUrl, description, round)
+      VALUES (${mapData.LongUrl}, ${mapData.ShortUrl}, "", ${mapData.round});
     `;
 
     }catch(error){

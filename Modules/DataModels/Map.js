@@ -1,11 +1,19 @@
 class Map{
 
-    constructor(LongUrl, ShortUrl, round){
+    constructor(LongUrl, ShortUrl, description, round){
         this.LongUrl=LongUrl;
         this.ShortUrl=ShortUrl;
         this.round=round;
+        this.description=description;
     }
 
+    getDescription(){
+        return this.description;
+    }
+
+    setDescription(description){
+        this.description=description;
+    }
 
     getRound(){
         return this.round;
